@@ -7,8 +7,13 @@
 import Foundation
 
 
-func fileNameFrom(_ dayNumber: Int, _ type: Type) -> String {
-    let name = String(format: "day_%02d.", dayNumber)
+func paddedDayNumber(_ dayNumber: Int, separator: String = "_") -> String {
+    String(format: "day\(separator)%02d", dayNumber)
+}
+
+
+func fileNameFrom(_ dayNumber: Int, _ type: InputType) -> String {
+    let name = paddedDayNumber(dayNumber) + "."
     var suffix = ""
     switch type {
         case .test: suffix = "test_input"

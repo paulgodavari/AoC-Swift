@@ -2,12 +2,20 @@
 // AoC
 //
 // Copyright (c) 2025 Paul Godavari. All rights reserved. 
+//
+// This project depends on having the Input directory populated from:
+// https://github.com/paulgodavari/AoC-Input, which is a private repo.
+// It is considered bad for to share the Advent of Code input data
+// and/or answers. You'll need to supply your own data to use this code.
+//
+// The Xcode scheme expects to have the run directory set to
+// $(PROJECT_DIR)/Input for ease of opening input files.
 
 
 import Foundation
 
 
-func measureTime(_ operation: () -> PartResult) -> RunResult {
+func measurePartTime(_ operation: () -> PartResult) -> RunResult {
     let start = DispatchTime.now()
     
     let partResult = operation()
@@ -20,7 +28,7 @@ func measureTime(_ operation: () -> PartResult) -> RunResult {
 }
 
 
-func runDay(day: Day) -> RunResult {
+func runDayPart(day: DayPart) -> RunResult {
     let fileName = fileNameFrom(day.number, day.type)
     var result = RunResult()
     
@@ -30,7 +38,7 @@ func runDay(day: Day) -> RunResult {
         let lines = contents
             .components(separatedBy: .newlines)
             .filter { !$0.isEmpty }
-        result = measureTime {
+        result = measurePartTime {
             day.function(lines)
         }
     } catch {
@@ -42,16 +50,12 @@ func runDay(day: Day) -> RunResult {
 
 
 func main() {
-    print("Aoc Start")
-    
     for day in days {
-        let result = runDay(day: day)
+        let result = runDayPart(day: day)
         if case let .numeric(value) = result.partResult {
-            print("Day\(day.number) \(day.part.rawValue) \(value) in \(result.time) ms")
+            print("\(paddedDayNumber(day.number, separator: " ").capitalized) \(day.part.rawValue): \(value) in \(result.time) ms")
         }
     }
-    
-    print("Aoc Stop")
 }
 
 
