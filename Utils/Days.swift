@@ -25,6 +25,13 @@ enum Type {
 
 struct Result {
     var value: Int64 = 0
+    var time: Double = 0.0
+}
+
+
+enum RunResult {
+    case failure
+    case success(Result)
 }
 
 

@@ -51,6 +51,7 @@ func ComputeDistance(_ left: [Int], _ right: [Int]) throws -> Int64 {
     return distance
 }
 
+
 func Day_01_2024(_ inputFileLines: [String]) -> Result {
     var result = Result()
     

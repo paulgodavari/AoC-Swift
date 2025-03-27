@@ -7,27 +7,25 @@
 import Foundation
 
 
-func measureTime<T>(_ operation: () -> T) -> (result: T, durationMilliseconds: Double) {
-    let start = DispatchTime.now()
-    let result = operation()
-    let end = DispatchTime.now()
+func RunDay(day: Day) -> RunResult {
+    let fileName = fileNameFrom(day.number, day.type)    
+    var result: RunResult = .failure
     
-    let nanoseconds = end.uptimeNanoseconds - start.uptimeNanoseconds
-    let milliseconds = Double(nanoseconds) / Double(NSEC_PER_MSEC)
-    
-    return (result, milliseconds)
-}
-
-
-func fileNameFrom(_ dayNumber: Int, _ type: Type) -> String {
-    let name = String(format: "day_%02d.", dayNumber)
-    var suffix = ""
-    switch type {
-        case .test: suffix = "test_input"
-        case .full: suffix = "input"
-        case .custom(let s): suffix = "test_input_" + s
+    do {
+        let fileURL = URL(fileURLWithPath: fileName)
+        let contents = try String(contentsOf: fileURL, encoding: .utf8)
+        let lines = contents
+            .components(separatedBy: .newlines)
+            .filter { !$0.isEmpty }
+        let (value, time) = measureTime {
+            day.function(lines)
+        }
+        result = RunResult.success(value)
+    } catch {
+        print("Error loading input file '\(fileName)': \(error)")
     }
-    return name + suffix
+    
+    return result
 }
 
 
@@ -35,25 +33,9 @@ func main() {
     print("Aoc Start")
     
     for day in days {
-        let fileName = fileNameFrom(day.number, day.type)
-        var lines = [String]()
-        
-        do {
-            let fileURL = URL(fileURLWithPath: fileName)
-            let contents = try String(contentsOf: fileURL, encoding: .utf8)
-            lines = contents
-                .components(separatedBy: .newlines)
-                .filter { !$0.isEmpty }
-        } catch {
-            print("Error loading input file '\(fileName)': \(error)")
-            continue
-        }
-        
-        let (result, time) = measureTime {
-            day.function(lines)
-        }
-        
-        print("Day\(day.number) \(day.part.rawValue) \(result.value) in \(time) ms")
+        let result = RunDay(day: day)
+        if case let .success(
+        print("Day\(day.number) \(day.part.rawValue) \(result.value) in \(result.time) ms")
     }
     
     print("Aoc Stop")
