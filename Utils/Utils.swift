@@ -13,14 +13,14 @@ func paddedDayNumber(_ dayNumber: Int, separator: String = "_") -> String {
 
 
 func fileNameFrom(_ dayNumber: Int, _ type: InputType) -> String {
-    let name = paddedDayNumber(dayNumber) + "."
+    let name = paddedDayNumber(dayNumber)
     var suffix = ""
     switch type {
         case .test: suffix = "test_input"
         case .full: suffix = "input"
         case .custom(let s): suffix = "test_input_" + s
     }
-    return name + suffix
+    return name + "." + suffix
 }
 
 
