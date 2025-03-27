@@ -7,6 +7,9 @@
 import Foundation
 
 
+typealias DayFunction = ([String]) -> PartResult
+
+
 enum ProblemPart: String {
     case part1 = "Part 1"
     case part2 = "Part 2"

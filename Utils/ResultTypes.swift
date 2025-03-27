@@ -7,9 +7,6 @@
 import Foundation
 
 
-typealias DayFunction = ([String]) -> PartResult
-
-
 enum PartResult {
     case failure
     case numeric(Int64)

@@ -11,6 +11,10 @@
 		66B69CFF2D94EA1C00F63B48 /* PartTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B69CED2D94DCE400F63B48 /* PartTypes.swift */; };
 		66B69D072D94EA6800F63B48 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B69D062D94EA6800F63B48 /* Utils.swift */; };
 		66B69D082D94EA6800F63B48 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B69D062D94EA6800F63B48 /* Utils.swift */; };
+		66B69D152D95EA3A00F63B48 /* day_01.test_input in Resources */ = {isa = PBXBuildFile; fileRef = 66B69D112D95EA3900F63B48 /* day_01.test_input */; };
+		66B69D162D95EA3A00F63B48 /* day_01.input in Resources */ = {isa = PBXBuildFile; fileRef = 66B69D122D95EA3900F63B48 /* day_01.input */; };
+		66B69D172D95EA3A00F63B48 /* day_02.test_input in Resources */ = {isa = PBXBuildFile; fileRef = 66B69D132D95EA3A00F63B48 /* day_02.test_input */; };
+		66B69D182D95EA3A00F63B48 /* day_02.input in Resources */ = {isa = PBXBuildFile; fileRef = 66B69D142D95EA3A00F63B48 /* day_02.input */; };
 		66E5E76C2D95A8A7000D95E2 /* ResultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E5E76B2D95A8A7000D95E2 /* ResultTypes.swift */; };
 		66E5E76D2D95A8A7000D95E2 /* ResultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E5E76B2D95A8A7000D95E2 /* ResultTypes.swift */; };
 		66E5E76F2D95BA77000D95E2 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E5E76E2D95BA77000D95E2 /* Days.swift */; };
@@ -35,6 +39,10 @@
 		66B69CED2D94DCE400F63B48 /* PartTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartTypes.swift; sourceTree = "<group>"; };
 		66B69CF72D94E71100F63B48 /* AoC-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AoC-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66B69D062D94EA6800F63B48 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		66B69D112D95EA3900F63B48 /* day_01.test_input */ = {isa = PBXFileReference; lastKnownFileType = text; name = day_01.test_input; path = Input/day_01.test_input; sourceTree = "<group>"; };
+		66B69D122D95EA3900F63B48 /* day_01.input */ = {isa = PBXFileReference; lastKnownFileType = text; name = day_01.input; path = Input/day_01.input; sourceTree = "<group>"; };
+		66B69D132D95EA3A00F63B48 /* day_02.test_input */ = {isa = PBXFileReference; lastKnownFileType = text; name = day_02.test_input; path = Input/day_02.test_input; sourceTree = "<group>"; };
+		66B69D142D95EA3A00F63B48 /* day_02.input */ = {isa = PBXFileReference; lastKnownFileType = text; name = day_02.input; path = Input/day_02.input; sourceTree = "<group>"; };
 		66E5E7482D9354F0000D95E2 /* AoC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AoC; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E5E76B2D95A8A7000D95E2 /* ResultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTypes.swift; sourceTree = "<group>"; };
 		66E5E76E2D95BA77000D95E2 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Days.swift; path = Input/Days.swift; sourceTree = SOURCE_ROOT; };
@@ -97,12 +105,24 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		66B69D1A2D95EA7E00F63B48 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				66B69D122D95EA3900F63B48 /* day_01.input */,
+				66B69D112D95EA3900F63B48 /* day_01.test_input */,
+				66B69D142D95EA3A00F63B48 /* day_02.input */,
+				66B69D132D95EA3A00F63B48 /* day_02.test_input */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
 		66E5E73F2D9354F0000D95E2 = {
 			isa = PBXGroup;
 			children = (
 				66B69D092D94EAD900F63B48 /* Utils */,
 				66E5E74A2D9354F0000D95E2 /* AoC */,
 				66B69CF82D94E71100F63B48 /* Tests */,
+				66B69D1A2D95EA7E00F63B48 /* Input */,
 				66E5E7492D9354F0000D95E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,6 +226,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B69D152D95EA3A00F63B48 /* day_01.test_input in Resources */,
+				66B69D162D95EA3A00F63B48 /* day_01.input in Resources */,
+				66B69D172D95EA3A00F63B48 /* day_02.test_input in Resources */,
+				66B69D182D95EA3A00F63B48 /* day_02.input in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

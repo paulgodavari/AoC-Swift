@@ -23,10 +23,10 @@ func measurePartTime(_ operation: () -> PartResult) -> RunResult {
 
 func runDayPart(day: DayPart) -> RunResult {
     let fileName = fileNameFrom(day.number, day.type)
+    let fileURL = URL(fileURLWithPath: fileName)
     var result = RunResult()
     
     do {
-        let fileURL = URL(fileURLWithPath: fileName)
         let contents = try String(contentsOf: fileURL, encoding: .utf8)
         let lines = contents
             .components(separatedBy: .newlines)
@@ -34,6 +34,26 @@ func runDayPart(day: DayPart) -> RunResult {
         result = measurePartTime {
             day.function(lines)
         }
+    } catch {
+        print("Error loading input file '\(fileName)': \(error)")
+    }
+    
+    return result
+}
+
+
+func runTest(day: DayPart, directory: URL) -> PartResult {
+    let fileName = fileNameFrom(day.number, day.type)
+    let fileUrl = directory.appending(path: fileName)
+    
+    var result: PartResult = .failure
+    
+    do {
+        let contents = try String(contentsOf: fileUrl, encoding: .utf8)
+        let lines = contents
+            .components(separatedBy: .newlines)
+            .filter { !$0.isEmpty }
+        result = day.function(lines)
     } catch {
         print("Error loading input file '\(fileName)': \(error)")
     }
