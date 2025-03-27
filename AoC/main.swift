@@ -7,9 +7,22 @@
 import Foundation
 
 
-func RunDay(day: Day) -> RunResult {
-    let fileName = fileNameFrom(day.number, day.type)    
-    var result: RunResult = .failure
+func measureTime(_ operation: () -> PartResult) -> RunResult {
+    let start = DispatchTime.now()
+    
+    let partResult = operation()
+    
+    let end = DispatchTime.now()
+    let nanoseconds = end.uptimeNanoseconds - start.uptimeNanoseconds
+    let milliseconds = Double(nanoseconds) / Double(NSEC_PER_MSEC)
+    
+    return RunResult(partResult: partResult, time: milliseconds)
+}
+
+
+func runDay(day: Day) -> RunResult {
+    let fileName = fileNameFrom(day.number, day.type)
+    var result = RunResult()
     
     do {
         let fileURL = URL(fileURLWithPath: fileName)
@@ -17,10 +30,9 @@ func RunDay(day: Day) -> RunResult {
         let lines = contents
             .components(separatedBy: .newlines)
             .filter { !$0.isEmpty }
-        let (value, time) = measureTime {
+        result = measureTime {
             day.function(lines)
         }
-        result = RunResult.success(value)
     } catch {
         print("Error loading input file '\(fileName)': \(error)")
     }
@@ -33,9 +45,10 @@ func main() {
     print("Aoc Start")
     
     for day in days {
-        let result = RunDay(day: day)
-        if case let .success(
-        print("Day\(day.number) \(day.part.rawValue) \(result.value) in \(result.time) ms")
+        let result = runDay(day: day)
+        if case let .numeric(value) = result.partResult {
+            print("Day\(day.number) \(day.part.rawValue) \(value) in \(result.time) ms")
+        }
     }
     
     print("Aoc Stop")

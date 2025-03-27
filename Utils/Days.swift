@@ -7,7 +7,7 @@
 import Foundation
 
 
-typealias DayFunction = ([String]) -> Result
+typealias DayFunction = ([String]) -> PartResult
 
 
 enum Part: String {
@@ -23,15 +23,15 @@ enum Type {
 }
 
 
-struct Result {
-    var value: Int64 = 0
-    var time: Double = 0.0
+enum PartResult {
+    case failure
+    case numeric(Int64)
 }
 
 
-enum RunResult {
-    case failure
-    case success(Result)
+struct RunResult {
+    var partResult: PartResult = .failure
+    var time: TimeInterval = 0.0
 }
 
 
@@ -47,4 +47,6 @@ let days = [
     Day(number: 1, part: .part1, type: .test, function: Day_01_2024),
     Day(number: 1, part: .part1, type: .full, function: Day_01_2024),
     // Day(number: 1, part: .part1, type: .custom("Farkle"), function: Day_01_2024)
+    // Day(number: 1, part: .part2, type: .test, function: Day_01_2024),
+    // Day(number: 1, part: .part2, type: .full, function: Day_01_2024),
 ]

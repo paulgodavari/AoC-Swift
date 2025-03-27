@@ -52,14 +52,15 @@ func ComputeDistance(_ left: [Int], _ right: [Int]) throws -> Int64 {
 }
 
 
-func Day_01_2024(_ inputFileLines: [String]) -> Result {
-    var result = Result()
+func Day_01_2024(_ inputFileLines: [String]) -> PartResult {
+    var result: PartResult = .failure
     
     do {
         var (leftList, rightList) = try ParseInput(inputFileLines)
         leftList.sort()
         rightList.sort()
-        result.value = try ComputeDistance(leftList, rightList)
+        let distance: Int64 = try ComputeDistance(leftList, rightList)
+        result = .numeric(distance)
     } catch InputError.lineFormat(let value, let line) {
         print("Invalid input at line \(line): '\(value)'")
     } catch InputError.lengthMismatch {
