@@ -31,12 +31,3 @@ struct DayPart {
     var expectedResult: Int64
 }
 
-
-//let days = [
-//    DayPart(number: 1, part: .part1, type: .test, function: Day_01_2024, expectedResult: 11),
-//    DayPart(number: 1, part: .part1, type: .full, function: Day_01_2024, expectedResult: 1830467),
-//    
-//    // Day(number: 1, part: .part1, type: .custom("Farkle"), function: Day_01_2024)
-//    // Day(number: 1, part: .part2, type: .test, function: Day_01_2024),
-//    // Day(number: 1, part: .part2, type: .full, function: Day_01_2024),
-//]
