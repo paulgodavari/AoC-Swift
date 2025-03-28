@@ -7,7 +7,7 @@
 import Foundation
 
 
-typealias DayFunction = ([String]) -> PartResult
+typealias DayFunction = ([String], ProblemPart) -> PartResult
 
 
 enum ProblemPart: String {

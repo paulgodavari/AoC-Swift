@@ -32,7 +32,7 @@ func runDayPart(day: DayPart) -> RunResult {
             .components(separatedBy: .newlines)
             .filter { !$0.isEmpty }
         result = measurePartTime {
-            day.function(lines)
+            day.function(lines, day.part)
         }
     } catch {
         print("Error loading input file '\(fileName)': \(error)")
@@ -53,7 +53,7 @@ func runTest(day: DayPart, directory: URL) -> PartResult {
         let lines = contents
             .components(separatedBy: .newlines)
             .filter { !$0.isEmpty }
-        result = day.function(lines)
+        result = day.function(lines, day.part)
     } catch {
         print("Error loading input file '\(fileName)': \(error)")
     }
